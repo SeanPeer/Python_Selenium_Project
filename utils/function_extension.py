@@ -14,6 +14,13 @@ class SafeFunctions:
         self.driver.get(f'https://{site}/')
 
     def safe_click(self, locator, timeout=10):
+        """
+        Safely clicks on an element identified by the given locator within the specified timeout.
+
+        :param locator: A tuple of (By, locator) to identify the element.
+        :param timeout: Maximum time to wait for the element to be clickable.
+        :return: True if the element is successfully clicked, False if an exception occurs.
+        """
         try:
             element = WebDriverWait(self.driver, timeout).until(
                 EC.element_to_be_clickable(locator)
@@ -25,6 +32,13 @@ class SafeFunctions:
             return False
 
     def safe_read(self, locator, timeout=10):
+        """
+        Safely reads the text from an element identified by the given locator within the specified timeout.
+
+        :param locator: A tuple of (By, locator) to identify the element.
+        :param timeout: Maximum time to wait for the element to be visible.
+        :return: The text of the element if successfully read; None if an exception occurs.
+        """
         try:
             element = WebDriverWait(self.driver, timeout).until(
                 EC.visibility_of_element_located(locator)
