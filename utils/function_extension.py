@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.by import By
+
 from utils.driver_factory import DriverFactory
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -11,7 +11,7 @@ from selenium.common.exceptions import TimeoutException, ElementClickIntercepted
 class SafeFunctions:
     def __init__(self, site):
         self.driver = DriverFactory.get_driver()
-        self.driver.get(f'http://{site}/')
+        self.driver.get(f'https://{site}/')
 
     def safe_click(self, locator, timeout=10):
         try:
